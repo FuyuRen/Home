@@ -1,0 +1,383 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+* {
+	margin: 0;
+	padding: 0;
+	user-select: none;
+	-webkit-user-select: none;
+	box-sizing: border-box;
+	transition: all 0.5s;
+	cursor: default;
+}
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #323232;
+	text-align: center;
+}
+#title {
+	margin: auto;
+	font-size: 20px;
+	font-family: "微软雅黑";
+	color: #CECECE;
+	font-weight: 100;
+	text-shadow: 0 0 2px white;
+}
+#maindiv {
+	width: 1000px;
+	height: 600px;
+	margin: auto;
+	margin-top: 10px;
+	border: 2px solid grey;
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+#textArea {
+	width: 200px;
+	height: 570px;
+	margin-left: 10px;
+	border: 2px solid grey;
+	overflow-y: auto;
+}
+#textArea span {
+	color: #CECECE;
+	text-shadow: 0 0 2px white;
+	font-family: "微软雅黑";
+	font-weight: 100;
+	font-size: 17px;
+	float: left;
+	margin-left: 3px;
+	text-align: left;
+}
+#playerArea {
+	width: 770px;
+	height: 50px;
+	border: 2px solid grey;
+	position: absolute;
+	left: 220px;
+	top: 13px;
+	text-align: left;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.player {
+	width: 33.33%;
+	height: auto;
+	display: inline-block;
+	color: #CECECE;
+	text-shadow: 0 0 2px white;
+	font-family: "微软雅黑";
+	font-weight: 100;
+	font-size: 25px;
+	float: left;
+	text-align: center;
+}
+.player span {
+	cursor: pointer;
+}
+.player span:hover {
+	color: yellow;
+}
+.subDiv {
+	width: 770px;
+	height: 500px;
+	border: 2px solid grey;
+	position: absolute;
+	left: 0;
+	top: 0;
+	box-sizing: border-box;
+	background-color: rgba(255,255,255,0.9);
+	display: none;
+}
+.exit {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	border: 2px solid grey;
+	background-color: rgba(0,0,0,0.2);
+	cursor: pointer;
+	text-shadow: 0 0 2px white;
+	font-family: "微软雅黑";
+	font-weight: 100;
+	font-size: 15px;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.exit:hover {
+	background-color: #DDDDDD;
+}
+#gameArea {
+	width: 770px;
+	height: 500px;
+	border: 2px solid grey;
+	display: block;
+	position: absolute;
+	left: 220px;
+	top: 83px;
+}
+.block {
+	width: 200px;
+	height: 100px;
+	border: 5px solid grey;
+	border-radius: 20px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -50px 0 0 -100px;
+	font-family: "微软雅黑";
+	text-shadow: 0 0 2px white;
+	font-weight: 100;
+	font-size: 15px;
+	color: white;
+}
+#top {
+	margin: -200px 0 0 -100px;
+}
+#left {
+	margin: -50px 0 0 -350px;
+}
+#right {
+	margin: -50px 0 0 150px;
+}
+#bottom {
+	margin: 100px 0 0 -100px;
+}
+#mid {
+	border: 5px solid grey;
+	border-radius: 20px;
+	position: absolute;
+	font-family: "微软雅黑";
+	text-shadow: 0 0 2px white;
+	font-weight: 100;
+	font-size: 25px;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.name {
+	font-size: 25px;
+}
+.spe {
+	background-color: #BDBDBD;
+	text-shadow: 0 0 2px white;
+	color: white;
+	background: rgba(158,158,158,1.00);
+	cursor: pointer;
+}
+.spe:hover {
+	background-color: #E9E9E9;
+	text-shadow: 0 0 2px black;
+	color: black;
+}
+#quiet {
+	width: 70px;
+	height: 30px;
+	border: 2px solid grey;
+	border-radius: 10px;
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	font-family: "微软雅黑";
+	text-shadow: 0 0 2px white;
+	font-weight: 100;
+	font-size: 15px;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	background-color: #676767;
+}
+#quiet:hover {
+	background-color: #CCCCCC;
+	color: black;
+	text-shadow: 0 0 2px black;
+}
+#points_div {
+	width: 200px;
+	height: 30px;
+	position: absolute;
+	top: 5px;
+	left: 50%;
+	margin-left: -100px;
+	font-family: "微软雅黑";
+	text-shadow: 0 0 2px black;
+	font-weight: 100;
+	font-size: 15px;
+	color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#magic_div {
+	width: 600px;
+	height: 400px;
+	position: absolute;
+	top: 50px;
+	left: 50%;
+	margin-left: -300px;
+	font-family: "微软雅黑";
+	text-shadow: 0 0 2px black;
+	font-weight: 100;
+	font-size: 25px;
+	color: black;
+	line-height: 60px;
+}
+.upgrade {
+	text-decoration: underline;
+	cursor: pointer;
+	margin-left: 30px;
+}
+.use {
+	text-decoration: underline;
+	cursor: pointer;
+	margin-left: 30px;
+}
+#use_div {
+	width: 500px;
+	height: 30px;
+	position: absolute;
+	top: 30px;
+	left: 50%;
+	margin-left: -250px;
+	font-family: "微软雅黑";
+	text-shadow: 0 0 2px black;
+	font-weight: 100;
+	font-size: 15px;
+	color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+#player_Div {
+	width: 600px;
+	height: 20px;
+	position: absolute;
+	top: 5px;
+	left: 50%;
+	margin-left: -300px;
+	font-family: "微软雅黑";
+	text-shadow: 0 0 2px black;
+	font-weight: 100;
+	font-size: 25px;
+	color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.htmleaf-content {
+	width: 400px;
+	position: absolute;
+	top: 35px;
+	left: 50%;
+	margin-left: -200px;
+}
+#exp_div {
+	width: 650px;
+	height: 30px;
+	position: absolute;
+	top: 35px;
+	left: 50%;
+	margin-left: -300px;
+	font-family: "微软雅黑";
+	text-shadow: 0 0 2px black;
+	font-weight: 100;
+	font-size: 15px;
+	color: black;
+	text-align: right;
+}
+#infomation_div {
+	width: 600px;
+	height: 400px;
+	position: absolute;
+	top: 70px;
+	left: 50%;
+	margin-left: -300px;
+	font-family: "微软雅黑";
+	text-shadow: 0 0 2px black;
+	font-weight: 100;
+	font-size: 20px;
+	color: black;
+	text-align: left;
+}
+#playerAttr {
+	width: 600px;
+	height: 20px;
+	position: absolute;
+	top: 5px;
+	left: 50%;
+	margin-left: -300px;
+	font-family: "微软雅黑";
+	text-shadow: 0 0 2px white;
+	font-weight: 100;
+	font-size: 15px;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+@-webkit-keyframes breathe {
+ 0% {
+ opacity:.7;
+ box-shadow:0 1px 2px rgba(255,255,255,0.1);
+}
+100% {
+ opacity:1;
+ box-shadow:0 1px 30px rgba(59,255,255,1);
+}
+}
+#restart_button {
+	width: 70px;
+	height: 40px;
+	border: 1px solid #2b92d4;
+	font-family: "微软雅黑";
+	text-shadow: 0 0 2px white;
+	font-weight: 100;
+	font-size: 20px;
+	color: white;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	cursor: pointer;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0,56,255,0.3);
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-name: breathe;
+	-webkit-animation-duration: 2700ms;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-direction: alternate;
+}
+
+#restartPoint{
+	width: 200px;
+	height: 50px;
+	border: 2px solid black;
+	border-radius: 20px;
+	font-family: "微软雅黑";
+	text-shadow: 0 0 2px black;
+	font-weight: 100;
+	font-size: 20px;
+	color: black;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(243,255,0,0.5);
+	margin: auto;
+}
+#restartPoint:hover{
+	background-color: rgba(243,255,0,0.7);
+	box-shadow: 0 1px 30px rgba(243,255,0,0.7);
+}

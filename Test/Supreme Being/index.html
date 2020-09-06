@@ -1,0 +1,289 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>无上至尊</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/progressBar.css">
+	<link rel="stylesheet" href="css/checkbox.css">
+</head>
+
+	<body>
+		<h1 id="title">无上至尊</h1>
+		<div id="maindiv">
+			<div id="textArea">
+				
+			</div>
+			<div id="playerArea">
+				<div class="player">
+					<span onClick="PlayerEvent(1)">-&nbsp;人物&nbsp;-</span>
+				</div>
+				<div class="player">
+					<span onClick="PlayerEvent(2)">-&nbsp;魔法&nbsp;-</span>
+				</div>
+				<div class="player">
+					<span onClick="PlayerEvent(3)">-&nbsp;区域&nbsp;-</span>
+				</div>
+			</div>
+			<div id="gameArea">
+				<div id="playerAttr">
+					<span>生命:</span>
+					<span id="heal">100</span>
+				</div>
+				<div id="restart_button">重生</div>
+				<div class="block spe" id = "top" onClick="Move(1)">
+					<span class="name">NAME</span>
+					<br/>
+					<span>你将</span>
+					<span class="effectName">不知道</span>
+					<span class="effectHp">0</span>
+					<span>点生命值</span>
+					<br/>
+					<span class="add_exp" style="color: yellow"></span>
+				</div>
+				<div class="block spe" id = "left" onClick="Move(2)">
+					<span class="name">NAME</span>
+					<br/>
+					<span>你将</span>
+					<span class="effectName">不知道</span>
+					<span class="effectHp">0</span>
+					<span>点生命值</span>
+					<br/>
+					<span class="add_exp" style="color: yellow"></span>
+				</div>
+				<div class="block spe" id = "right" onClick="Move(3)">
+					<span class="name">NAME</span>
+					<br/>
+					<span>你将</span>
+					<span class="effectName">不知道</span>
+					<span class="effectHp">0</span>
+					<span>点生命值</span>
+					<br/>
+					<span class="add_exp" style="color: yellow"></span>
+				</div>
+				<div class="block spe" id = "bottom" onClick="Move(4)">
+					<span class="name">NAME</span>
+					<br/>
+					<span>你将</span>
+					<span class="effectName">不知道</span>
+					<span class="effectHp">0</span>
+					<span>点生命值</span>
+					<br/>
+					<span class="add_exp" style="color: yellow"></span>
+				</div>
+				<div class="block" id = "mid">征程开始</div>
+				<div id="quiet" onClick="quiet()">静音</div>
+				
+				<div class="checkbox" onClick="label_click()">
+					<span>自动战斗</span>
+					<span>&nbsp;</span>
+					<span>✔</span>
+				</div>
+				
+			<div class="subDiv">
+				<div class="exit" onClick="exit()">×</div>
+				<div id="player_Div">
+					<span>等级&nbsp;</span>
+					<span id="level">1</span>
+				</div>
+				<div class="htmleaf-content">
+					<div id="progressbar1"></div>
+				</div>
+				<div id="exp_div">
+					<span id="exp1" class="exp">0</span>
+					<span>/</span>
+					<span id="exp2" class="exp">0</span>
+				</div>
+				<div id="infomation_div">
+					<span>正在使用:</span>
+					<span id="select_sub"></span>
+					<span>伤害加成:</span>
+					<span id="add_1"></span>
+					<span>属性加成:</span>
+					<span id="add_2"></span>
+					
+					<br/>
+					
+					<span>当前基础伤害</span>
+					<span id="dmg_1">0</span>
+					<span>+</span>
+					<span id="dmg_2">0</span>
+					
+					<br/>
+					
+					<span>当前属性伤害</span>
+					<span id="dmg_3">0</span>
+					<span>+</span>
+					<span id="dmg_4">0</span>
+					
+					<br/>
+					<br/>
+					
+					<span>--数据统计--</span>
+					
+					<br/>
+					
+					<span>死亡次数:</span>
+					<span id="dead_sum">0</span>
+					
+					<br/>
+					
+					<span>游玩时间:</span>
+					<span id="time_sum">00:00:00</span>
+				</div>
+			</div>
+			<div class="subDiv">
+				<div class="exit" onClick="exit()">×</div>
+				<div id="points_div">
+					<span>可支配点数:</span>
+					<span id="points">0</span>
+				</div>
+				<div id="use_div">
+					<span>正在使用:</span>
+					<span id="select">名字</span>
+				</div>
+				<div id="magic_div">
+					<span class="magic_name">名字&nbsp;</span>
+					<span>升级需要:&nbsp;&nbsp;</span>
+					<span class="point">0</span>
+					<span>点数</span>
+					<span class="upgrade" onClick = "upgradeMagic(0)">升级</span>
+					<span class="use" onClick = "useMagic(0)">使用</span>
+					<br>
+					<span class="magic_name">名字&nbsp;</span>
+					<span>升级需要:&nbsp;&nbsp;</span>
+					<span class="point">0</span>
+					<span>点数</span>
+					<span class="upgrade" onClick = "upgradeMagic(1)">升级</span>
+					<span class="use" onClick = "useMagic(1)">使用</span>
+					<br>
+					<span class="magic_name">名字&nbsp;</span>
+					<span>升级需要:&nbsp;&nbsp;</span>
+					<span class="point">0</span>
+					<span>点数</span>
+					<span class="upgrade" onClick = "upgradeMagic(2)">升级</span>
+					<span class="use" onClick = "useMagic(2)">使用</span>
+					<br>
+					<span class="magic_name">名字&nbsp;</span>
+					<span>升级需要:&nbsp;&nbsp;</span>
+					<span class="point">0</span>
+					<span>点数</span>
+					<span class="upgrade" onClick = "upgradeMagic(3)">升级</span>
+					<span class="use" onClick = "useMagic(3)">使用</span>
+					<br>
+					<span class="magic_name">名字&nbsp;</span>
+					<span>升级需要:&nbsp;&nbsp;</span>
+					<span class="point">0</span>
+					<span>点数</span>
+					<span class="upgrade" onClick = "upgradeMagic(4)">升级</span>
+					<span class="use" onClick = "useMagic(4)">使用</span>
+					<br>
+					<span class="magic_name">名字&nbsp;</span>
+					<span>升级需要:&nbsp;&nbsp;</span>
+					<span class="point">0</span>
+					<span>点数</span>
+					<span class="upgrade" onClick = "upgradeMagic(5)">升级</span>
+					<span class="use" onClick = "useMagic(5)">使用</span>
+					
+					<div id="restartPoint" onClick="restartPoint()">重置点数</div>
+				</div>
+			</div>
+			<div class="subDiv" id="chooseDiv">
+				<div class="exit" onClick="exit()">×</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/playMusic.js"></script>
+	<script src="js/magic.js"></script>
+	<script src="js/jQuery.js"></script>
+	<script src="js/Progressbar.js"></script>
+	<script src="js/player.js"></script>
+	<script src="js/Maincode.js"></script>
+	<script src="js/maps.js"></script>
+	<script src="js/label.js"></script>
+	<script>
+		var Auto_flag = false;
+		
+		var magic_points = 0;
+		var version = "0.12";
+		var music_flag = true;
+		var openDiv_flag = false;
+		var hp = 100;
+		var showTime = document.getElementById("time_sum");
+		var se = [
+			new Audio("Backup/Cursor.ogg"),
+			new Audio("Backup/Move.ogg"),
+			new Audio("Backup/error.ogg"),
+			new Audio("Backup/Equip.ogg"),
+			new Audio("Backup/Up.ogg")
+		];
+		var bgms = [
+			new Audio("Backup/bgm_1.ogg"),
+			new Audio("Backup/bgm_2.ogg"),
+			new Audio("Backup/bgm_3.ogg")
+		];
+		function addP(val,color){
+			var textArea = document.getElementById("textArea");
+			textArea.innerHTML += 
+				"<span style = 'text-shadow: 0 0 2px " + color + "'>" + val + "</span>";
+			textArea.scrollTop = textArea.scrollHeight;
+		}
+		function clearP(){
+			var textArea = document.getElementById("textArea");
+			textArea.innerHTML = "";
+		}
+		function addLine(){addP("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;","white");
+		}
+		function init(){
+			addP("这里是Fuyu,欢迎你来到当前版本‘无上至尊’的测试,目前版本为" + version + ",请在游玩过程中多注意此处的文本提示哦~(如果没有声音请允许自动播放或多点两下右下角静音)","white")
+		}
+		function PlayerEvent(index){
+			playMusic_normal(se[0]);
+			var true_index = parseInt(index) - 1;
+			var subDivs = document.getElementsByClassName("subDiv");
+			exit();
+			showWindow(subDivs[true_index],true_index);
+			if(true_index == 0){
+				enterPlayerArea();
+			}else if(true_index == 1){
+				magic();
+			}else if(true_index == 2){
+				
+			}else{
+				alert("error");
+			}
+		}
+		function exit(){
+			var subDivs = document.getElementsByClassName("subDiv");
+			for(var i = 0; i < subDivs.length; i++){
+				closeWindow(subDivs[i],i);
+			}
+		}
+		function closeWindow(obj,index){
+			var texts = document.getElementsByClassName("player");
+			obj.style.display = "none";
+			texts[index].style.color = "#CECECE";
+		}
+		function showWindow(obj,index){
+			var texts = document.getElementsByClassName("player");
+			obj.style.display = "block";
+			texts[index].style.color = "yellow";
+		}
+		playMusic(bgms[2]);
+		function quiet(){
+			if(music_flag){
+				music_flag = false;
+				stopMusic(bgms[2]);
+			}else{
+				music_flag = true;
+				playMusic(bgms[2]);
+			}
+		}
+		window.onload = function(){
+			init();
+			setInterval(animation,1000);
+			showText(0);
+		}
+		
+	</script>
+</html>

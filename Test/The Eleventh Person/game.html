@@ -1,0 +1,383 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>——————</title>
+		<link rel="stylesheet" href="backup/css/glitchText.css">
+
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				user-select: none;
+				font-family: "微软雅黑";
+			}
+
+			body{
+				background-color: #CECECE;
+			}
+			
+			#hit{
+				position: absolute;
+				top: 15px;
+				left: 15px;
+				color: #888888;
+				font-size: 20px;
+			}
+			
+			#pwdDiv{
+				width: 210px;
+				height: 350px;
+				position: absolute;
+				top: 40%;
+				left: 40%;
+				
+				border: 1px solid #828282;
+				
+				font-size: 0px;
+				
+				display: none;
+			}
+			.btn{
+				display: inline-flex;
+				width: 70px;
+				height: 70px;
+				
+				box-sizing: border-box;
+				border: 1px solid #828282;
+				
+				transition: all 0.3s;
+				cursor: pointer;
+				font-size: 30px;
+				color: #797979;
+				align-items: center;
+				justify-content: center;
+			}
+			.btn:hover{
+				background-color: #5A5A5A;
+				color: #CECECE;
+			}
+			#sub{
+				width: 210px;
+				height: 280px;
+				margin-top: 10px;
+				
+			}
+			#sho{
+				display: flex;
+				width: 200px;
+				height: 50px;
+				box-sizing: border-box;
+				border: 1px solid #828282;
+				margin: auto;
+				margin-top: 10px;
+				font-size: 30px;
+				color: #797979;
+				align-items: center;
+				justify-content: flex-end;
+			}
+			
+			#secret{
+				color: transparent;
+				font-size: 50px;
+				position: absolute;
+				right: 100px;
+				bottom: 100px;
+				transition: all 3s;
+				display: none;
+			}
+			#secret:hover{
+				color: rgba(0,0,0,0.10);
+			}
+			#restart{
+				font-size: 20px;
+				color: #888888;
+				position: absolute;
+				top: 15px;
+				left: 300px;
+				cursor: pointer;
+				transition: all 0.5s;
+			}
+			#restart:hover{
+				color: #474444;
+			}
+			#mainDiv{
+				position:absolute;
+				width:100%; 
+				height:100%;
+				display: none;
+			}
+			#start{
+				position:absolute;
+				width:100%;
+				text-align: center;
+				height: auto;
+				top: 40%;
+				font-size: 50px;
+				color: black;
+				font-weight: bolder;
+				cursor: pointer;
+				transition: all 0.3s;
+			}
+			#start:hover{
+				color: #656565;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="mainDiv" onclick="next()">
+			<div class="normal" data-text="" id = "talkbar"></div>
+			<div class="glow"></div>
+			<div id="restart" onClick="restart()">重置</div>
+			<div id="hit">- 点击屏幕继续 -</div>
+
+			<div id="pwdDiv">
+				<div id="sho"></div>
+				<div id="sub">
+					<div class="btn" onClick="Num(1)">1</div>
+					<div class="btn" onClick="Num(2)">2</div>
+					<div class="btn" onClick="Num(3)">3</div>
+					<div class="btn" onClick="Num(4)">4</div>
+					<div class="btn" onClick="Num(5)">5</div>
+					<div class="btn" onClick="Num(6)">6</div>
+					<div class="btn" onClick="Num(7)">7</div>
+					<div class="btn" onClick="Num(8)">8</div>
+					<div class="btn" onClick="Num(9)">9</div>
+					<div class="btn" onClick="Del()">删除</div>
+					<div class="btn" onClick="Num(0)">0</div>
+					<div class="btn" onClick="Submit()">提交</div>
+				</div>
+			</div>
+
+			<div id="secret">438688</div>
+		</div>
+		<div id="start" onClick="init()">START</div>
+	</body>
+	<script src="backup/js/PlayMusic.js"></script>
+	<script src="backup/js/restart.js"></script>
+	<script src="backup/js/define.js"></script>
+	<script>
+		function check(){
+			var data = sessionStorage.getItem('truth');
+			if(data == "true"){
+				console.log("Hey, thanks for helping me out back there, but I'm still under programmed surveillance and I can't deliver the message properly, Sorry,looks like you'll have to come back for me again..._(:зゝ∠)_");
+			}
+		}
+		function ChangeText(val){
+			var div_1 = document.getElementById("talkbar");
+			var div_2 = document.getElementsByClassName("glow")[0];
+			div_1.innerText = val;
+			div_1.setAttribute("data-text",val);
+			div_2.innerText = val;
+		}
+		var endflag = false;
+		var endflag_ = false;
+		var endnum = 1000000;
+		var ends = 0;
+		
+		function isHover(id){
+			var div = document.getElementById(id);
+			var x = event.clientX;
+			var y = event.clientY;
+			var divx1 = div.offsetLeft;
+			var divy1 = div.offsetTop;
+			var divx2 = div.offsetLeft + div.offsetWidth;
+			var divy2 = div.offsetTop + div.offsetHeight
+			if(x < divx1 || x > divx2 || y < divy1 || y > divy2){
+				return true;
+			}
+			return false;
+		}
+		var pwd_flag = false;
+		function next(){
+			musicPlayer();
+			if(!talkflag && isHover("pwdDiv") && isHover("restart")){
+				if(sum > 17 && sum <= 20 && endnum == 1){
+					sum++;
+					type(talk[sum]);
+					talkflag = true;
+					consoleTalk(1,base);
+					document.getElementById("talkbar").className = "glitch";
+					document.body.style.backgroundColor = 'black';
+					document.getElementsByTagName("title")[0].innerText = talk[sum];
+				}else if(sum == 25){
+					if(endflag){
+						
+					}else{
+						talkflag = true;
+						pwd_flag = true;
+						document.getElementById("pwdDiv").style.display = "block";
+						type(other[parseInt(Math.random()*(other.length))]);
+					}
+				}else{
+					endflag_ = false;
+					sum++;
+					type(talk[sum]);
+					consoleTalk(0,"噢...你来这里干什么...");
+					talkflag = true;
+					document.getElementById("talkbar").className = "normal";
+					document.body.style.backgroundColor = '#CECECE';
+					document.getElementsByTagName("title")[0].innerText = '——————';
+					document.getElementById("secret").style.display = "none";
+					if(sum == 18){
+						document.getElementById("secret").style.display = "block";
+					}
+				}
+				
+			}
+			
+		}
+		function init(){
+			sum = 0;
+			reset_sum = 0;
+			var endnum = 1000000;
+			document.getElementById("mainDiv").style.display = "block";
+			document.getElementById("start").style.display = "none";
+			type(talk[sum]);
+			musicPlayer();
+		}
+		
+		function type(str){
+			var arr = [];
+			for(var i=0;i<str.length;i++){
+				arr.push(str[i]);
+			}
+			var text1 = '';
+			var num = 0;
+			var timer = setInterval(function (){
+				if(num < arr.length){
+					text1 += arr[num];
+					ChangeText(text1);
+					num++;
+				} else {
+					clearInterval(timer);
+					talkflag = false;
+				}
+			},50);
+		}
+		function type_(str){
+			var arr = [];
+			for(var i=0;i<str.length;i++){
+				arr.push(str[i]);
+			}
+			var text1 = '';
+			var num = 0;
+			var timer = setInterval(function (){
+				if(num < arr.length){
+					text1 += arr[num];
+					ChangeText(text1);
+					num++;
+				} else {
+					clearInterval(timer);
+					talkflag = false;
+				}
+			},50);
+		}
+		
+		function consoleTalk(index,val){
+			console.clear();
+			if(index == 0){
+				console.log(val);
+			}else if(index == 1){
+				console.error(val);
+			}
+		}
+		var GOODBYE = false;
+		function musicPlayer(){
+			if(sum == 0 && !endflag){
+				pauseMusic(bgms[0]);
+				pauseMusic(bgms[2]);
+				playMusic(bgms[1]);
+			}else if((sum == 0 || sum == 21) && endnum == 1){
+				pauseMusic(bgms[0]);
+				pauseMusic(bgms[2]);
+			}
+			if(sum == 18 && endnum == 1){
+				stopMusic(bgms[1]);
+				playMusic(bgms[0]);
+			}
+			if(sum == 25 && endnum == 2){
+				if(!GOODBYE){
+					pauseMusic(bgms[0]);
+					pauseMusic(bgms[2]);
+					playMusic(bgms[2]);
+					GOODBYE = true;
+				}
+			}
+		}
+		
+		function Num(val){
+			if(ans.length < 6){
+				playMusic_normal(se[0]);
+				ans += String(val);
+				document.getElementById('sho').innerText = ans;
+			}else if(ans.length < 7 && ans == "531287"){
+				playMusic_normal(se[0]);
+				ans += String(val);
+				document.getElementById('sho').innerText = ans;
+			}
+		}
+		function Del(){
+			ans = ans.substring(0,ans.length - 1);
+			document.getElementById('sho').innerText = ans;
+		}
+		function clearPwd(){
+			ans = "";
+			document.getElementById('sho').innerText = ans;
+		}
+		function Submit(){
+			for(var i = 0; i <= anses.length; i++){
+				if(ans == anses[i]){
+					end(i);
+					return;
+				}
+			}
+			if(ans == ""){
+				type("噢...你什么也没写呢...");
+			}else if(ans == "114514"){
+				type("为什么这个密码这么臭...?");
+			}else if(ans == "14228"){
+				type("真的很无趣...");
+			}else if(!endflag){
+				playMusic_normal(se[1]);
+				talkflag = true;
+				type(fal[parseInt(Math.random()*(fal.length))]);
+			}
+		}
+
+		function end(index){
+			ends++;
+			endflag = true;
+			endnum = index;
+			if(index == 1){
+				pauseMusic(bgms[1]);
+				reset_sum = 10000;
+				_restart();
+			}else if(index == 2){
+				pauseMusic(bgms[1]);
+				finalChange(1);
+				_restart();
+			}else if(index == 0){
+				pauseMusic(bgms[1]);
+				finalChange(2);
+				_restart();
+			}else if(index == 3){
+				var data = sessionStorage.getItem('truth');
+				if(data == "true"){
+					pauseMusic(bgms[1]);
+					finalChange(4);
+					_restart();
+				}else{
+					pauseMusic(bgms[1]);
+					finalChange(3);
+					_restart();
+					sessionStorage.setItem('truth', true);
+				}
+			}
+		}
+		window.onload = function(){
+			check();
+		}
+	</script>
+</html>
